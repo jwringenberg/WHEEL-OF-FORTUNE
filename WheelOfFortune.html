@@ -1,0 +1,165 @@
+<html>
+
+<head>
+  <title>Wheel</title>
+  <link rel = "stylesheet" href = "lackOfStyle.css">
+  <script src= "code.js"></script>
+  <script>
+  var previousSpin = 0;
+  var currentSpin = 0;
+  // 0 = Lose a turn: -1 = bankrupt
+  var values = [5000,600,500,300,500,
+                 800,550,400,300,900,500,
+                 300,900,-1,600,400,300,
+                 0, 800, 350, 450,700,300,600];
+
+ var degrees = 0;
+ var money = 0;
+ var winnings = 0;
+ var result = 0;
+ var mess = "";
+  var resultMess = "";
+
+ var resultString = ["_","_","_","_","_","_","_","_"];
+
+ var puzzle = ["n" ,"e" , "b" , "r" , "a", "s" , "k" , "a"];
+
+
+
+    function spin()
+    {
+      genNumber(); //Math so that the number generated is on top of wheel
+      degrees += (1080 + (15 * (previousSpin - currentSpin)));
+      $('.img').css({
+          'transform': 'rotate(' + degrees + 'deg)',
+          '-ms-transform': 'rotate(' + degrees + 'deg)',
+          '-moz-transform': 'rotate(' + degrees + 'deg)',
+          '-webkit-transform': 'rotate(' + degrees + 'deg)',
+          '-o-transform': 'rotate(' + degrees + 'deg)'
+        });
+    }
+
+
+  function display()
+  {
+     document.getElementById('spinResult').innerHTML = "$0";
+     document.getElementById('winnings').innerHTML = "$0";
+     var printOut = "";
+     for(var i = 0; i < resultString.length; i++)
+     {
+       printOut = printOut + resultString[i] + "&nbsp&nbsp";
+     }
+     document.getElementById('puzz').innerHTML = printOut;
+  }
+
+  function genNumber()
+  {
+    previousSpin = currentSpin;
+    currentSpin = parseInt(values.length * Math.random());
+     money = values[parseInt(currentSpin)];
+
+     if(money == -1)
+     {
+       money = 0;
+       winnings = 0;
+       mess = "BANKRUPT!!!";
+       resultMess = mess;
+       document.getElementById('winnings').innerHTML = "$0";
+     }
+     else if(money == 0)
+     {
+        mess = "Lose a Turn - No Money";
+        resultMess = mess;
+     }
+     else
+     {
+         mess = "$" + money;
+         resultMess = mess;
+     }
+      document.getElementById('spinResult').innerHTML = resultMess;
+  }
+
+  function checkGuess()
+  {
+    var isIn = false;
+    var target = document.getElementById('guess').value;
+
+    for(var i = 0; i < puzzle.length; i++)
+    {
+       if(target == puzzle[i])
+       {
+          isIn = true;
+          resultString[i] = target;
+       }
+       else
+       {
+          printOut = printOut + " _ ";
+       }
+    }
+    if(isIn)
+    {
+        winnings = winnings + money;
+        mess = "$" + winnings;
+        document.getElementById('winnings').innerHTML = mess;
+        document.getElementById('dis').innerHTML = "   " +target + " is in the puzzle!";
+     }
+     else
+     {
+         document.getElementById('dis').innerHTML = " " +target + " is NOT in the puzzle!";
+     }
+
+     var printOut = "";
+     for(var i = 0; i < resultString.length; i++)
+     {
+       printOut = printOut + resultString[i] + " ";
+     }
+
+     checkWin();
+     document.getElementById('puzz').innerHTML = printOut;
+  }
+
+  function checkWin()
+  {
+    var temp = false;
+    var solved = false;
+    for(var i = 0; i < resultString.length; i++)
+    {
+      if( resultString[i] == "_" )
+      {
+        temp = true;
+      }
+      else if(temp == false && i == resultString.length -1)
+      {
+          window.location.href = "WinPage.html";
+
+      }
+    }
+  }
+
+  </script>
+</head>
+
+<body onload = "display()">
+  <center><div id = "text">
+     <div>Enter a Guess: <span id = "dis"></span></div>
+     <input id = "guess" type = "text">
+     <input type = "button" id = "buttonSty" value = "Submit Guess" onclick = "checkGuess()">
+     <br><hr>
+     <div>
+     Your Spin:
+     <span id = "spinResult"></span>
+    </div>
+     <div>
+     Your Total Money:
+     <span id = "winnings"></span>
+    </div>
+    <div>
+     Puzzle:
+     <span id = "puzz"></span>
+   </div><br>
+     <div class="arrow-down"></div>
+    <img class = "img"id = "wheel" src = "wheel.png" onclick = "spin()">
+     </div>
+     </center>
+</body>
+</html>

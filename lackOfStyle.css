@@ -1,0 +1,55 @@
+body{
+      font-family: sans-serif;
+      background-color: #D7BF67;
+    }
+hr{
+      border-top: 5px dotted red;
+  }
+#text{
+      font-family: fantasy;
+      font-size: 30px;
+   }
+#buttonSty{
+      background-color: #48AB45; /* Green */
+      border: black solid 2px;
+      color: white;
+      height: 38px;
+      width: 180px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+#buttonSty:hover{
+      color: #48AB45;
+      background-color: white;
+    }
+#guess{
+      height: 38px;
+      width: 180px;
+      font-family: fantasy;
+      font-size: 20px;
+    }
+#dis{
+      color: red;
+      font-family: sans-serif;
+    }
+.rotated {
+      transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+   }
+.img{
+     transition: all 0.5s ease;
+     height: 350px;
+     width: 350px;
+  }
+.arrow-down {
+     width: 0;
+     height: 0;
+     border-left: 20px solid transparent;
+     border-right: 20px solid transparent;
+     border-top: 20px solid red;
+  }

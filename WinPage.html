@@ -1,0 +1,77 @@
+<html>
+<head>
+   <link rel="stylesheet" href="obnoxious.css">
+  <style>
+    #wintext{
+
+      }
+    hr{
+      border-top: 5px dotted red;
+    }
+
+    #text{
+              font-family: fantasy;
+              font-size: 30px;
+         }
+    body{
+          font-family: sans-serif;
+          background-color: #D7BF67;
+        }
+  #buttonSty{
+              background-color: #48AB45; /* Green */
+              border: black solid 2px;
+              color: white;
+              height: 38px;
+              width: 180px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+            }
+  #buttonSty:hover{
+                   color: #48AB45;
+                   background-color: white;
+                 }
+                 #guess{
+                   height: 38px;
+                   width: 180px;
+                   font-family: fantasy;
+                   font-size: 20px;
+                 }
+    #dis{
+          color: red;
+          font-family: sans-serif;
+        }
+    </style>
+</head>
+<body onload = "display()">
+  <center><div id = "text">
+     <div>Enter a Guess: <span id = "dis"></span></div>
+     <input id = "guess" type = "text">
+     <input type = "button" id = "buttonSty" value = "Submit Guess" onclick = "checkGuess()">
+     <br><hr>
+     <div>
+     Your Spin: CAR !
+     <span id = "spinResult"></span>
+    </div>
+     <div>
+     Your Total Money: CAR !!
+     <span id = "winnings"></span>
+    </div>
+    <div>
+     Puzzle: CAR !!!
+     <span id = "puzz"></span>
+     </div>
+     </div>
+     <div>
+     <br>
+     <div id = "car">
+      <h1 class="animated intensifies">YOU WON A BRAND NEW CAR!!!!</h1>
+        <br>
+        <img  src = "car.jpg" height="210px" width="310px">
+      </div>
+
+     </div>
+     </center>
+</body>
+</html>
