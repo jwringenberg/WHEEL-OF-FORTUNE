@@ -18,7 +18,8 @@
  var winnings = 0;
  var result = 0;
  var mess = "";
-  var resultMess = "";
+ var resultMess = "";
+ var didYouSpin = false;
 
  var resultString = ["_","_","_","_","_","_","_","_"];
 
@@ -28,6 +29,7 @@
 
     function spin()
     {
+      didYouSpin = true;
       genNumber(); //Math so that the number generated is on top of wheel
       degrees += (1080 + (15 * (previousSpin - currentSpin)));
       $('.img').css({
@@ -82,6 +84,15 @@
   function checkGuess()
   {
     var isIn = false;
+    
+    if(didYouSpin == false)
+    {
+       document.getElementById('dis').innerHTML = " SPIN THE WHEEL!";
+    }
+   
+      didYouSpin = false;
+    
+    
     var target = document.getElementById('guess').value;
 
     for(var i = 0; i < puzzle.length; i++)
