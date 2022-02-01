@@ -89,14 +89,12 @@
     {
        document.getElementById('dis').innerHTML = " SPIN THE WHEEL!";
     }
-   
+   else
+   {
       didYouSpin = false;
-    
-    
-    var target = document.getElementById('guess').value;
-
-    for(var i = 0; i < puzzle.length; i++)
-    {
+      var target = document.getElementById('guess').value;
+      for(var i = 0; i < puzzle.length; i++)
+      {
        if(target == puzzle[i])
        {
           isIn = true;
@@ -127,6 +125,7 @@
 
      checkWin();
      document.getElementById('puzz').innerHTML = printOut;
+   }
   }
 
   function checkWin()
@@ -146,7 +145,6 @@
       }
     }
   }
-
   </script>
 </head>
 
